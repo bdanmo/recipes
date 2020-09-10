@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  a(href='/') ← Back to recipes
+
+  h1= recipe.recipe_name
+
+  img(src=`${recipe.image_url}` width='320' height='240')
+
+  p= recipe.description
+
+  h2 Ingredients
+  ul
+    each ingredient in recipe.ingredients
+      li= ingredient
+
+  h2 Steps
+  ol
+    each step in recipe.steps
+      li= step
