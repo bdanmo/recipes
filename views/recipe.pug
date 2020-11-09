@@ -1,20 +1,25 @@
 extends layout
 
 block content
-  a(href='/') ← Back to recipes
+  nav.grid-container.breadcrumb
+    a(href='/') ← Back to recipes
+    button Dark Mode
 
-  h1= recipe.recipe_name
+  main.grid-container.recipe
+    h1= recipe.recipe_name
+    img.img-recipe(src=`${recipe.image_url}`)
+    p.lead.text-light= recipe.description
 
-  img(src=`${recipe.image_url}` width='320' height='240')
+    hr
 
-  p= recipe.description
+    h3 Ingredients
+    ul
+      //- iterates over each ingredient to render an `<li>` for each ingredient
+      each ingredient in recipe.ingredients
+        li= ingredient
 
-  h2 Ingredients
-  ul
-    each ingredient in recipe.ingredients
-      li= ingredient
-
-  h2 Steps
-  ol
-    each step in recipe.steps
-      li= step
+    h3 Steps
+    ol
+      //- iterates over each step to render an `<li>` for each recipe step
+      each step in recipe.steps
+        li= step
